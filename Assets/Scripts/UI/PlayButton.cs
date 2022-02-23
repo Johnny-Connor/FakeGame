@@ -13,7 +13,7 @@ public class PlayButton : MonoBehaviour
         SetupVariables();
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         // Changing color (doesn't work due to a bug, apparently).
         _colorBlock.normalColor = _digitalGreen;
@@ -21,6 +21,12 @@ public class PlayButton : MonoBehaviour
         // Finding player and changing its icon.
         Player player = FindObjectOfType<Player>();
         player.ChangeIcon(1);
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log("click detected");
+            FakeGameUI aux = FindObjectOfType<FakeGameUI>();
+            aux.PlayAnimation(0);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
