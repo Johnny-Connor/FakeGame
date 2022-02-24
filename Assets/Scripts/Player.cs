@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
             case 2:
                 _spriteRenderer.sprite = _iconsID[2];
                 break;
+            default:
+                break;
         }
     }
 
