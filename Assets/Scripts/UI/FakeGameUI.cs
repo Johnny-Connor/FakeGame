@@ -3,27 +3,52 @@ using UnityEngine;
 public class FakeGameUI : MonoBehaviour
 {
 
-    private Animation anim;
+    private Animator _animator;
+    private int _gameStartPhaseParameter;
+    private bool _canStartRealGameUI;
 
     private void Awake()
     {
-        anim = GetComponent<Animation>();
+        _animator = GetComponent<Animator>();
+        // StringToHash lets you refer to a string through a number (variable int).
+        _gameStartPhaseParameter = Animator.StringToHash("GameStartPhase");
     }
 
-    public void PlayAnimation(int ID)
+    public void SetAnimation(int ID)
     {
         switch (ID)
         {
             case 0:
-                anim.Play("GameStart");
+                _animator.SetInteger(_gameStartPhaseParameter, ID);
                 break;
             case 1:
-                anim.Play("GameStartOver");
+                _animator.SetInteger(_gameStartPhaseParameter, ID);
                 break;
             default:
-                Debug.Log("Animation " + ID + " not found!");
+                Debug.Log("Animation " + ID + " doesn't exist!");
                 break;
         }
+    }
+
+    // Used by "GameStart" animation.
+    private void SetCanStartRealGameUI(int zeroOrOne)
+    {
+        switch (zeroOrOne)
+        {
+            case 0:
+                _canStartRealGameUI = false;
+                break;
+            case 1:
+                _canStartRealGameUI = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public bool GetCanStartRealGameUI
+    {
+        get { return _canStartRealGameUI; }
     }
 
 }

@@ -23,9 +23,8 @@ public class PlayButton : MonoBehaviour
         player.ChangeIcon(1);
         if (Input.GetMouseButton(0))
         {
-            Debug.Log("click detected");
             FakeGameUI aux = FindObjectOfType<FakeGameUI>();
-            aux.PlayAnimation(0);
+            aux.SetAnimation(0);
         }
     }
 
