@@ -3,8 +3,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    private int HP = 1;
+    private int SCR;
     [SerializeField] private Sprite[] _iconsID = new Sprite[3];
     private SpriteRenderer _spriteRenderer;
+    private float _canScore = -1;
+    private float _scoreFreq = 0.01f;
 
     private void Awake()
     {
@@ -14,6 +18,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        GainScore();
         Movement();
     }
 
@@ -39,6 +44,33 @@ public class Player : MonoBehaviour
     {
         Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorPos;
+    }
+
+    private void GainScore()
+    {
+        RealGameUI aux = FindObjectOfType<RealGameUI>();
+        if (aux.GetIsGameRunning)
+        {
+            if (Time.time > _canScore)
+            {
+                SCR++;
+                _canScore = Time.time + _scoreFreq;
+            }
+        }
+        else
+        {
+            SCR = 0;
+        }
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        HP -= dmg;
+    }
+
+    public int GetSCR
+    {
+        get { return SCR; }
     }
 
 }

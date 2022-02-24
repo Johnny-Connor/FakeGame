@@ -30,7 +30,7 @@ public class FakeGameUI : MonoBehaviour
         }
     }
 
-    // Used by "GameStart" animation.
+    // Used in "GameStart" animation.
     private void SetCanStartRealGameUI(int zeroOrOne)
     {
         switch (zeroOrOne)
