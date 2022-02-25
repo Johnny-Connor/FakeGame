@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class PlayButton : MonoBehaviour
 {
 
+    private Animation _anim;
+    private bool _animationPlayed;
     private Button _button;
     private Color _digitalGreen;
     private ColorBlock _colorBlock;
@@ -11,6 +13,15 @@ public class PlayButton : MonoBehaviour
     private void Awake()
     {
         SetupVariables();
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player" && _animationPlayed == false)
+        {
+            _anim.Play("FadeIn");
+            _animationPlayed = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D col)
@@ -46,6 +57,7 @@ public class PlayButton : MonoBehaviour
 
     private void SetupVariables()
     {
+        _anim = GetComponent<Animation>();
         _button = GetComponent<Button>();
         _digitalGreen = new Color(12, 224, 9);
         _colorBlock = _button.colors;

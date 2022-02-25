@@ -25,7 +25,6 @@ public class FakeGameUI : MonoBehaviour
                 _animator.SetInteger(_gameStartPhaseParameter, ID);
                 break;
             default:
-                Debug.Log("Animation " + ID + " doesn't exist!");
                 break;
         }
     }

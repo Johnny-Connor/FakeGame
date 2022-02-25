@@ -19,33 +19,41 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        Death();
         GainScore();
+        InvincibilityCheck();
         Movement();
     }
 
     public void ChangeIcon(int ID)
     {
-        // 1 - Normal | 2 - Click Available | 3 - Rock n roll
-        switch (ID)
+        if (_isInvincible == false)
         {
-            case 0:
-                _spriteRenderer.sprite = _iconsID[0];
-                break;
-            case 1:
-                _spriteRenderer.sprite = _iconsID[1];
-                break;
-            case 2:
-                _spriteRenderer.sprite = _iconsID[2];
-                break;
-            default:
-                break;
+            // 1 - Normal | 2 - Click Available | 3 - Rock n roll
+            switch (ID)
+            {
+                case 0:
+                    _spriteRenderer.sprite = _iconsID[0];
+                    break;
+                case 1:
+                    _spriteRenderer.sprite = _iconsID[1];
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            _spriteRenderer.sprite = _iconsID[2];
         }
     }
 
-    public void Movement()
+    private void Death()
     {
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = cursorPos;
+        if (HP <= 0)
+        {
+            Debug.Log("dead");
+        }
     }
 
     private void GainScore()
@@ -65,6 +73,37 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void InvincibilityCheck()
+    {
+        // add timer and rainbow animation
+        if (_isInvincible)
+        {
+            ChangeIcon(2);
+        }
+    }
+
+    public void Movement()
+    {
+        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (cursorPos.x < 8)
+        {
+            cursorPos.x = 8;
+        }
+        else if (cursorPos.x > 1912)
+        {
+            cursorPos.x = 1912;
+        }
+        if (cursorPos.y < 20)
+        {
+            cursorPos.y = 20;
+        }
+        else if (cursorPos.y > 1060)
+        {
+            cursorPos.y = 1060;
+        }
+        transform.position = cursorPos;
+    }
+
     public void TakeBuff()
     {
         _isInvincible = true;
@@ -82,7 +121,5 @@ public class Player : MonoBehaviour
     {
         get { return SCR; }
     }
-
-    // needs a functions to decrease buffer timer and change icon while buffed
 
 }
