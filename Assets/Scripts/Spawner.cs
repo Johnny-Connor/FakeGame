@@ -4,9 +4,10 @@ public class Spawner : MonoBehaviour
 {
 
     private bool _isActive;
-    private float _canSpawn = -1;
-    private float _spawnFreq;
-    [SerializeField] private EnemyWord[] _enemiesList = new EnemyWord[2];
+    private float _canSpawnEnemy = -1;
+    private float _enemySpawnFreq = 2.5f;
+    [SerializeField] private GameObject[] _enemiesList = new GameObject[1];
+    [SerializeField] private GameObject[] _friendsList = new GameObject[1];
 
     private void Update()
     {
@@ -29,11 +30,19 @@ public class Spawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (_isActive && Time.time > _canSpawn)
+        if (_isActive && Time.time > _canSpawnEnemy)
         {
             int aux = Random.Range(0, _enemiesList.Length - 1);
             Instantiate(_enemiesList[2], transform.position, Quaternion.identity);
+            _canSpawnEnemy = Time.time + _enemySpawnFreq;
         }
     }
+
+    private void SpawnFriend()
+    {
+
+    }
+
+    // function to decrease _enemySpawnFreq as time passes.
 
 }

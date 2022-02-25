@@ -788,6 +788,8 @@ MonoBehaviour:
   _enemiesList:
   - {fileID: 0}
   - {fileID: 0}
+  _friendsList:
+  - {fileID: 0}
 --- !u!1 &467058773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I didn't have enough time to finish my game this time, but...
+  m_text: I didn't have enough time to finish my game, but...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fda1cea7cb9f9584fb13a0a65dae3569, type: 2}
   m_sharedMaterial: {fileID: -5751597935756694325, guid: fda1cea7cb9f9584fb13a0a65dae3569, type: 2}

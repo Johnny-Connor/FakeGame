@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    private bool _isInvincible;
     private int HP = 1;
     private int SCR;
     [SerializeField] private Sprite[] _iconsID = new Sprite[3];
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
 
     public void ChangeIcon(int ID)
     {
+        // 1 - Normal | 2 - Click Available | 3 - Rock n roll
         switch (ID)
         {
             case 0:
@@ -63,14 +65,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void TakeBuff()
+    {
+        _isInvincible = true;
+    }
+
     public void TakeDamage(int dmg)
     {
-        HP -= dmg;
+        if (_isInvincible == false)
+        {
+            HP -= dmg;
+        }
     }
 
     public int GetSCR
     {
         get { return SCR; }
     }
+
+    // needs a functions to decrease buffer timer and change icon while buffed
 
 }
