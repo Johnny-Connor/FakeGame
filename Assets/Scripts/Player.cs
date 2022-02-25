@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private float _canScore = -1;
     private float _scoreFreq = 0.01f;
     private float _invincibleTimer;
-    private float _invincibleDuration = 7.5f;
+    private float _invincibleDuration = 5f;
 
     private void Awake()
     {
@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Timer algorithm from https://docs.unity3d.com/ScriptReference/Time-deltaTime.html.
     private void InvincibilityCheck()
     {
         if (_isInvincible)
@@ -97,7 +98,12 @@ public class Player : MonoBehaviour
             if (_invincibleTimer > _invincibleDuration)
             {
                 _isInvincible = false;
-                _invincibleTimer -= _invincibleDuration;
+                /* Unity Documentation states that, over time, it's better to subtract
+                 * the duration from the current timer value than resetting it to 0.
+                 * However, I need it to be exactly 0 for the UI bar. Yes, there are
+                 * ways to do this without having to reset the value, but this is a
+                 * simple game, so no need to make it complex. */
+                _invincibleTimer = 0;
                 ChangeIcon(0);
                 _animator.SetInteger(_buffIdParameter, 0);
             }
@@ -129,6 +135,10 @@ public class Player : MonoBehaviour
     public void TakeBuff()
     {
         _isInvincible = true;
+        if (_invincibleTimer != 0)
+        {
+            _invincibleTimer = 0;
+        }
     }
 
     public void TakeDamage(int dmg)
@@ -141,14 +151,24 @@ public class Player : MonoBehaviour
     #endregion Custom Functions
 
     #region Properties
-    public int GetSCR
+    public float GetInvincibleDuration
     {
-        get { return _scr; }
+        get { return _invincibleDuration; }
     }
 
     public float GetInvincibleTimer
     {
         get { return _invincibleTimer; }
+    }
+
+    public bool GetIsInvincible
+    {
+        get { return _isInvincible; }
+    }
+
+    public int GetSCR
+    {
+        get { return _scr; }
     }
     #endregion Properties
 }

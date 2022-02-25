@@ -18,8 +18,8 @@ public class Spawner : MonoBehaviour
     private float _difficultyIncreaseFreq = 10f;
 
     [Header("Friend Related")]
-    private float _spawnTimeMin = 1f; //15
-    private float _spawnTimeMax = 3f; //30
+    private float _spawnTimeMin = 15f; //15
+    private float _spawnTimeMax = 25f; //30
     private float _canSpawnFriend;
 
     private void Update()

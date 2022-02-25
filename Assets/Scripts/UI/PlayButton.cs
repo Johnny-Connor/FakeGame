@@ -10,7 +10,8 @@ public class PlayButton : MonoBehaviour
 
     private void Awake()
     {
-        SetupVariables();
+        _anim = GetComponent<Animation>();
+        _button = GetComponent<Button>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -43,12 +44,6 @@ public class PlayButton : MonoBehaviour
             Player player = FindObjectOfType<Player>();
             player.ChangeIcon(0);
         }
-    }
-
-    private void SetupVariables()
-    {
-        _anim = GetComponent<Animation>();
-        _button = GetComponent<Button>();
     }
 
 }
