@@ -3,17 +3,30 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    [Header("Stats")]
     private bool _isInvincible;
-    private int HP = 1;
-    private int SCR;
+    private int _hp = 1;
+    private int _scr;
+
+    [Header("Animator variables")]
+    private Animator _animator;
+    private int _buffIdParameter;
+
+    [Header("Components")]
     [SerializeField] private Sprite[] _iconsID = new Sprite[3];
     private SpriteRenderer _spriteRenderer;
+
+    [Header("Aux")]
     private float _canScore = -1;
     private float _scoreFreq = 0.01f;
+    private float _invincibleTimer;
+    private float _invincibleDuration = 7.5f;
 
     private void Awake()
     {
         Cursor.visible = false;
+        _animator = GetComponent<Animator>();
+        _buffIdParameter = Animator.StringToHash("BuffId");
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -25,6 +38,7 @@ public class Player : MonoBehaviour
         Movement();
     }
 
+    #region Custom Functions
     public void ChangeIcon(int ID)
     {
         if (_isInvincible == false)
@@ -50,7 +64,7 @@ public class Player : MonoBehaviour
 
     private void Death()
     {
-        if (HP <= 0)
+        if (_hp <= 0)
         {
             Debug.Log("dead");
         }
@@ -63,22 +77,30 @@ public class Player : MonoBehaviour
         {
             if (Time.time > _canScore)
             {
-                SCR++;
+                _scr++;
                 _canScore = Time.time + _scoreFreq;
             }
         }
         else
         {
-            SCR = 0;
+            _scr = 0;
         }
     }
 
     private void InvincibilityCheck()
     {
-        // add timer and rainbow animation
         if (_isInvincible)
         {
+            _invincibleTimer += Time.deltaTime;
             ChangeIcon(2);
+            _animator.SetInteger(_buffIdParameter, 1);
+            if (_invincibleTimer > _invincibleDuration)
+            {
+                _isInvincible = false;
+                _invincibleTimer -= _invincibleDuration;
+                ChangeIcon(0);
+                _animator.SetInteger(_buffIdParameter, 0);
+            }
         }
     }
 
@@ -113,13 +135,20 @@ public class Player : MonoBehaviour
     {
         if (_isInvincible == false)
         {
-            HP -= dmg;
+            _hp -= dmg;
         }
     }
+    #endregion Custom Functions
 
+    #region Properties
     public int GetSCR
     {
-        get { return SCR; }
+        get { return _scr; }
     }
 
+    public float GetInvincibleTimer
+    {
+        get { return _invincibleTimer; }
+    }
+    #endregion Properties
 }

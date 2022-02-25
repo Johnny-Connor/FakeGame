@@ -3,8 +3,11 @@ using UnityEngine;
 public class FakeGameUI : MonoBehaviour
 {
 
+    [Header("Animator variables")]
     private Animator _animator;
     private int _gameStartPhaseParameter;
+
+    [Header("Class variables")]
     private bool _canStartRealGameUI;
 
     private void Awake()

@@ -4,9 +4,12 @@ using TMPro;
 public class RealGameUI : MonoBehaviour
 {
 
+    [Header("Animator variables")]
     private Animator _animator;
-    private bool _isGameRunning;
     private int _scoreStartPhaseParameter;
+
+    [Header("Class variables")]
+    private bool _isGameRunning;
     [Tooltip("The text which is going to display the Player's score.")] [SerializeField] private TMP_Text _scoreText;
 
     private void Awake()
@@ -22,6 +25,7 @@ public class RealGameUI : MonoBehaviour
         UpdateScoreText();
     }
 
+    #region Custom Functions
     private void AnimationManager()
     {
         FakeGameUI aux = FindObjectOfType<FakeGameUI>();
@@ -56,10 +60,13 @@ public class RealGameUI : MonoBehaviour
         Player aux = FindObjectOfType<Player>();
         _scoreText.text = "Score: " + aux.GetSCR.ToString("n0");
     }
+    #endregion Custom Functions
 
+    #region Properties
     public bool GetIsGameRunning
     {
         get { return _isGameRunning; }
     }
+    #endregion Properties
 
 }

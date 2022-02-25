@@ -51,6 +51,7 @@ public class Word : MonoBehaviour
         }
     }
 
+    #region Custom Functions
     private void IncreaseSpd()
     {
         RealGameUI aux = FindObjectOfType<RealGameUI>();
@@ -64,6 +65,7 @@ public class Word : MonoBehaviour
         }
         else
         {
+            // Not in "Start()" or "Awake()" because static variables resets after these.
             InitializeStaticVariables();
         }
     }
@@ -94,5 +96,6 @@ public class Word : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion CustomFunction
 
 }
