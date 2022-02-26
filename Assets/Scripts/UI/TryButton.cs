@@ -19,7 +19,7 @@ public class TryButton : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && _hasButtonBeenPressed == false)
         {
             _player.ChangeIcon(1);
         }

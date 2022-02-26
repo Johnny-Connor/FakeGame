@@ -44,7 +44,7 @@ public class Word : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player" && _wordTypeID == 1)
+        if (col.gameObject.tag == "Player")
         {
             Player aux = FindObjectOfType<Player>();
             aux.ChangeIcon(0);
