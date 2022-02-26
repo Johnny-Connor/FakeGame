@@ -11,7 +11,6 @@ public class RealGameUI : MonoBehaviour
     private int _invinciblePhaseParameter;
     private int _scoreStartPhaseParameter;
 
-
     [Header("Children")]
     [Tooltip("The text which is going to display the Player's score.")] [SerializeField] private TMP_Text _scoreText;
     [Tooltip("The slider which is going to show invincible timer.")] [SerializeField] private Slider _slider;
@@ -35,23 +34,40 @@ public class RealGameUI : MonoBehaviour
 
     private void Update()
     {
-        GameOverTextAnim();
+        PlayerDies();
         InvincibleAnim();
         ScoreAnim();
         UpdateScoreText();
     }
 
     #region Custom Functions
-    private void GameOverTextAnim()
+    private void PlayerDies()
     {
-        if (_isGameRunning == false && _player.GetIsAlive == false)
+        if (_player.GetIsAlive == false)
         {
-            _animator.SetInteger(_gameOverTextPhaseParameter, 0);
+            _isGameRunning = false;
+            // Shows Game Over Text.
+            SetGameOverPhase(0);
         }
     }
 
-    // Used by "ScoreAppears" animation.
-    private void SetIsGameRunning()
+    public void SetGameOverPhase(int ID)
+    {
+        switch (ID)
+        {
+            case 0:
+                _animator.SetInteger(_gameOverTextPhaseParameter, 0);
+                break;
+            case 1:
+                _animator.SetInteger(_gameOverTextPhaseParameter, 1);
+                break;
+            default:
+                break;
+        }
+    }
+
+    // Used by "ScoreAppears" and "GameOverTextDisappears" animations.
+    private void SetIsGameRunningToOn()
     {
         _isGameRunning = true;
     }
@@ -61,10 +77,6 @@ public class RealGameUI : MonoBehaviour
         if (_fakeGameUI.GetCanStartRealGameUI == true)
         {
             _animator.SetInteger(_scoreStartPhaseParameter, 0);
-        }
-        else
-        {
-            _animator.SetInteger(_scoreStartPhaseParameter, 1);
         }
     }
 
@@ -93,7 +105,6 @@ public class RealGameUI : MonoBehaviour
     public bool IsGameRunning
     {
         get { return _isGameRunning; }
-        set { _isGameRunning = value; }
     }
     #endregion Properties
 

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PlayButton : MonoBehaviour
+public class TryButton : MonoBehaviour
 {
 
     [Header("Go references")]
-    [SerializeField] private FakeGameUI _fakeGameUI;
+    [SerializeField] private RealGameUI _realGameUI;
     [SerializeField] private Player _player;
 
     private void OnTriggerStay2D(Collider2D col)
@@ -14,7 +14,8 @@ public class PlayButton : MonoBehaviour
             _player.ChangeIcon(1);
             if (Input.GetMouseButton(0))
             {
-                _fakeGameUI.SetFakeTextAnimation(1);
+                _player.Revive();
+                _realGameUI.SetGameOverPhase(1);
             }
         }
     }

@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
     [Header("Stats")]
     private bool _isAlive = true;
     private bool _isInvincible;
-    private int _hp = 1;
+    private int _hp;
+    private int _maxHp = 1;
     private int _scr;
 
     [Header("Animator variables")]
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        _hp = _maxHp;
         Cursor.visible = false;
         _animator = GetComponent<Animator>();
         _buffIdParameter = Animator.StringToHash("BuffId");
@@ -71,7 +73,6 @@ public class Player : MonoBehaviour
         if (_hp <= 0)
         {
             _isAlive = false;
-            _realGameUI.IsGameRunning = false;
             _animator.SetInteger(_buffIdParameter, 2);
         }
     }
@@ -131,6 +132,14 @@ public class Player : MonoBehaviour
             cursorPos.y = 1060;
         }
         transform.position = cursorPos;
+    }
+
+    public void Revive()
+    {
+        _isAlive = true;
+        _hp = _maxHp;
+        _scr = 0;
+        _animator.SetInteger(_buffIdParameter, 0);
     }
 
     public void TakeBuff()

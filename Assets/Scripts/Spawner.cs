@@ -87,7 +87,7 @@ public class Spawner : MonoBehaviour
         }
         else if (_isActive == false)
         {
-            _canSpawnFriend = Random.Range(_spawnTimeMin, _spawnTimeMax);
+            _canSpawnFriend = Time.time + Random.Range(_spawnTimeMin, _spawnTimeMax);
         }
     }
 
