@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     {
         if (_hp <= 0)
         {
+            _animator.SetInteger(_buffIdParameter, 2);
             Debug.Log("dead");
         }
     }
