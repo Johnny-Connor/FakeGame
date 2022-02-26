@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 
     [Header("Friend Related")]
     private float _spawnTimeMin = 12.5f;
-    private float _spawnTimeMax = 22.5f;
+    private float _spawnTimeMax = 17.5f;
     private float _canSpawnFriend;
 
     [Header("Go references")]

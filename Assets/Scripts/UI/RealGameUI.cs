@@ -20,6 +20,7 @@ public class RealGameUI : MonoBehaviour
     private bool _canChangeinvinciblePhaseToZero;
 
     [Header("Go references")]
+    [SerializeField] private AudioManager _audioManager;
     [SerializeField] private FakeGameUI _fakeGameUI;
     [SerializeField] private Player _player;
 
@@ -46,7 +47,7 @@ public class RealGameUI : MonoBehaviour
         if (_player.GetIsAlive == false)
         {
             _isGameRunning = false;
-            // Shows Game Over Text.
+            _audioManager.Stop("GameTheme");
             SetGameOverPhase(0);
         }
     }
@@ -97,6 +98,7 @@ public class RealGameUI : MonoBehaviour
         else if (_player.GetIsInvincible == false && _canChangeinvinciblePhaseToZero)
         {
             _animator.SetInteger(_invinciblePhaseParameter, 1);
+            _slider.value = 0;
         }
     }
     #endregion Custom Functions

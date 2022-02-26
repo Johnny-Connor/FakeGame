@@ -19,12 +19,14 @@ public class Player : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
     [Header("Aux")]
+    private bool _hasDeathSoundPlayed;
     private float _canScore = -1;
     private float _scoreFreq = 0.01f;
     private float _invincibleTimer;
     private float _invincibleDuration = 5f;
 
     [Header("Go references")]
+    [SerializeField] private AudioManager _audioManager;
     [SerializeField] private RealGameUI _realGameUI;
 
     private void Awake()
@@ -72,8 +74,14 @@ public class Player : MonoBehaviour
     {
         if (_hp <= 0)
         {
+
             _isAlive = false;
             _animator.SetInteger(_buffIdParameter, 2);
+            if (_hasDeathSoundPlayed == false)
+            {
+                _audioManager.Play("Death");
+                _hasDeathSoundPlayed = true;
+            }
         }
     }
 
@@ -100,12 +108,7 @@ public class Player : MonoBehaviour
             if (_invincibleTimer > _invincibleDuration)
             {
                 _isInvincible = false;
-                /* Unity Documentation states that, over time, it's better to subtract
-                 * the duration from the current timer value than resetting it to 0.
-                 * However, I need it to be exactly 0 for the UI bar. Yes, there are
-                 * ways to do this without having to reset the value, but this is a
-                 * simple game, so no need to make it complex. */
-                _invincibleTimer = 0;
+                _invincibleTimer -= _invincibleDuration;
                 ChangeIcon(0);
                 _animator.SetInteger(_buffIdParameter, 0);
             }
@@ -138,12 +141,14 @@ public class Player : MonoBehaviour
     {
         _isAlive = true;
         _hp = _maxHp;
+        _hasDeathSoundPlayed = false;
         _scr = 0;
         _animator.SetInteger(_buffIdParameter, 0);
     }
 
     public void TakeBuff()
     {
+        _audioManager.Play("GetBuff");
         _isInvincible = true;
         if (_invincibleTimer != 0)
         {
