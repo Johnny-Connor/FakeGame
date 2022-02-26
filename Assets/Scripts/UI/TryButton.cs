@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TryButton : MonoBehaviour
 {
+
     [Header("Aux")]
     private bool _hasButtonBeenPressed;
     private float _buttonDelayTotalTime = 1.5f;
