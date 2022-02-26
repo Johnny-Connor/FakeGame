@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
 
     [Header("Stats")]
+    private bool _isAlive = true;
     private bool _isInvincible;
     private int _hp = 1;
     private int _scr;
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
     {
         if (_hp <= 0)
         {
+            _isAlive = false;
             _realGameUI.IsGameRunning = false;
             _animator.SetInteger(_buffIdParameter, 2);
         }
@@ -158,6 +160,11 @@ public class Player : MonoBehaviour
     public float GetInvincibleTimer
     {
         get { return _invincibleTimer; }
+    }
+
+    public bool GetIsAlive
+    {
+        get { return _isAlive; }
     }
 
     public bool GetIsInvincible

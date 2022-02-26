@@ -7,8 +7,10 @@ public class RealGameUI : MonoBehaviour
 
     [Header("Animator")]
     private Animator _animator;
-    private int _scoreStartPhaseParameter;
+    private int _gameOverTextPhaseParameter;
     private int _invinciblePhaseParameter;
+    private int _scoreStartPhaseParameter;
+
 
     [Header("Children")]
     [Tooltip("The text which is going to display the Player's score.")] [SerializeField] private TMP_Text _scoreText;
@@ -28,30 +30,30 @@ public class RealGameUI : MonoBehaviour
         // StringToHash lets you refer to a string without needing to type it over and over.
         _scoreStartPhaseParameter = Animator.StringToHash("ScorePopUpPhase");
         _invinciblePhaseParameter = Animator.StringToHash("InvinciblePopUpPhase");
+        _gameOverTextPhaseParameter = Animator.StringToHash("GameOverTextPhase");
     }
 
     private void Update()
     {
+        GameOverTextAnim();
         InvincibleAnim();
         ScoreAnim();
         UpdateScoreText();
     }
 
     #region Custom Functions
-    // Used by "ScoreStart" and "ScoreEnd" animations.
-    private void SetIsGameRunning(int zeroOrOne)
+    private void GameOverTextAnim()
     {
-        switch (zeroOrOne)
+        if (_isGameRunning == false && _player.GetIsAlive == false)
         {
-            case 0:
-                _isGameRunning = false;
-                break;
-            case 1:
-                _isGameRunning = true;
-                break;
-            default:
-                break;
+            _animator.SetInteger(_gameOverTextPhaseParameter, 0);
         }
+    }
+
+    // Used by "ScoreAppears" animation.
+    private void SetIsGameRunning()
+    {
+        _isGameRunning = true;
     }
 
     private void ScoreAnim()
