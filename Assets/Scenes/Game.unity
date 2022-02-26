@@ -1728,11 +1728,11 @@ Animation:
   m_GameObject: {fileID: 1084663534}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: a68ab0be23396354d9260b9e7af2baef, type: 2}
+  m_Animation: {fileID: 7400000, guid: 27a661522dd01984dbfea2cd7b717c77, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: a68ab0be23396354d9260b9e7af2baef, type: 2}
+  - {fileID: 7400000, guid: 27a661522dd01984dbfea2cd7b717c77, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &1084663537
@@ -1756,7 +1756,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3084,8 +3084,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wordTypeID: 0
-  _realGameUI: {fileID: 0}
-  _player: {fileID: 0}
 --- !u!23 &7530742266394429022
 MeshRenderer:
   m_ObjectHideFlags: 0

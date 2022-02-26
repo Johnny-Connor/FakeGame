@@ -17,21 +17,6 @@ public class FakeGameUI : MonoBehaviour
         _fakeTextPhaseParameter = Animator.StringToHash("FakeTextPhase");
     }
 
-    public void SetAnimation(int ID)
-    {
-        switch (ID)
-        {
-            case 0:
-                _animator.SetInteger(_fakeTextPhaseParameter, ID);
-                break;
-            case 1:
-                _animator.SetInteger(_fakeTextPhaseParameter, ID);
-                break;
-            default:
-                break;
-        }
-    }
-
     // Used in "GameStart" animation.
     private void SetCanStartRealGameUI(int zeroOrOne)
     {
@@ -42,6 +27,21 @@ public class FakeGameUI : MonoBehaviour
                 break;
             case 1:
                 _canStartRealGameUI = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void SetFakeTextAnimation(int ID)
+    {
+        switch (ID)
+        {
+            case 0:
+                _animator.SetInteger(_fakeTextPhaseParameter, ID);
+                break;
+            case 1:
+                _animator.SetInteger(_fakeTextPhaseParameter, ID);
                 break;
             default:
                 break;
