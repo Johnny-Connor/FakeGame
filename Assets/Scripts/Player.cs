@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
     private int _hp;
     private int _maxHp = 1;
     private int _scr;
+    private int _minPosX = 13;
+    private int _maxPosX = 1907;
+    private int _minPosY = 20;
+    private int _maxPosY = 1060;
 
     [Header("Animator variables")]
     private Animator _animator;
@@ -124,21 +128,21 @@ public class Player : MonoBehaviour
     public void Movement()
     {
         Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (cursorPos.x < 8)
+        if (cursorPos.x < _minPosX)
         {
-            cursorPos.x = 8;
+            cursorPos.x = _minPosX;
         }
-        else if (cursorPos.x > 1912)
+        else if (cursorPos.x > _maxPosX)
         {
-            cursorPos.x = 1912;
+            cursorPos.x = _maxPosX;
         }
-        if (cursorPos.y < 20)
+        if (cursorPos.y < _minPosY)
         {
-            cursorPos.y = 20;
+            cursorPos.y = _minPosY;
         }
-        else if (cursorPos.y > 1060)
+        else if (cursorPos.y > _maxPosY)
         {
-            cursorPos.y = 1060;
+            cursorPos.y = _maxPosY;
         }
         transform.position = cursorPos;
     }
