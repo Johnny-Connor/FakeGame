@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -32,10 +33,15 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _hp = _maxHp;
-        Cursor.visible = false;
         _animator = GetComponent<Animator>();
         _buffIdParameter = Animator.StringToHash("BuffId");
         _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnGUI()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     private void Update()
