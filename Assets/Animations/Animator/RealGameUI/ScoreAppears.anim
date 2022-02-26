@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InvincibleEnd
+  m_Name: ScoreAppears
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -22,28 +22,28 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 420
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -580
+        inSlope: 350
+        outSlope: 350
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 405
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -405
+        inSlope: 160
+        outSlope: 160
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 580
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -420
+        inSlope: -30
+        outSlope: -30
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -51,7 +51,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: InvinciblePopUp
+    path: ScoreText
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -63,7 +63,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1439429235
+      path: 596210011
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
@@ -96,28 +96,28 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 420
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -580
+        inSlope: 350
+        outSlope: 350
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 405
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -405
+        inSlope: 160
+        outSlope: 160
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 580
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -420
+        inSlope: -30
+        outSlope: -30
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -125,10 +125,17 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: InvinciblePopUp
+    path: ScoreText
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: SetIsGameRunning
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0

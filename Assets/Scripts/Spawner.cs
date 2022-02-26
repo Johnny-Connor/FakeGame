@@ -18,8 +18,8 @@ public class Spawner : MonoBehaviour
     private float _difficultyIncreaseFreq = 10f;
 
     [Header("Friend Related")]
-    private float _spawnTimeMin = 12.5f; //15
-    private float _spawnTimeMax = 22.5f; //30
+    private float _spawnTimeMin = 12.5f;
+    private float _spawnTimeMax = 22.5f;
     private float _canSpawnFriend;
 
     [Header("Go references")]
