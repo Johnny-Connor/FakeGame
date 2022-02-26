@@ -8,6 +8,10 @@ public class PlayButton : MonoBehaviour
     private bool _animationPlayed;
     private Button _button;
 
+    [Header("Go references")]
+    [SerializeField] private FakeGameUI _fakeGameUI;
+    [SerializeField] private Player _player;
+
     private void Awake()
     {
         _anim = GetComponent<Animation>();
@@ -27,12 +31,10 @@ public class PlayButton : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            Player player = FindObjectOfType<Player>();
-            player.ChangeIcon(1);
+            _player.ChangeIcon(1);
             if (Input.GetMouseButton(0))
             {
-                FakeGameUI aux = FindObjectOfType<FakeGameUI>();
-                aux.SetAnimation(1);
+                _fakeGameUI.SetAnimation(1);
             }
         }
     }
@@ -41,8 +43,7 @@ public class PlayButton : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            Player player = FindObjectOfType<Player>();
-            player.ChangeIcon(0);
+            _player.ChangeIcon(0);
         }
     }
 

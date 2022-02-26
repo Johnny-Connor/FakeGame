@@ -5,7 +5,7 @@ public class FakeGameUI : MonoBehaviour
 
     [Header("Animator variables")]
     private Animator _animator;
-    private int _gameStartPhaseParameter;
+    private int _fakeTextPhaseParameter;
 
     [Header("Class variables")]
     private bool _canStartRealGameUI;
@@ -14,7 +14,7 @@ public class FakeGameUI : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         // StringToHash lets you refer to a string through a number (variable int).
-        _gameStartPhaseParameter = Animator.StringToHash("GameStartPhase");
+        _fakeTextPhaseParameter = Animator.StringToHash("FakeTextPhase");
     }
 
     public void SetAnimation(int ID)
@@ -22,10 +22,10 @@ public class FakeGameUI : MonoBehaviour
         switch (ID)
         {
             case 0:
-                _animator.SetInteger(_gameStartPhaseParameter, ID);
+                _animator.SetInteger(_fakeTextPhaseParameter, ID);
                 break;
             case 1:
-                _animator.SetInteger(_gameStartPhaseParameter, ID);
+                _animator.SetInteger(_fakeTextPhaseParameter, ID);
                 break;
             default:
                 break;

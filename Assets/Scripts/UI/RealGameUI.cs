@@ -18,6 +18,10 @@ public class RealGameUI : MonoBehaviour
     private bool _isGameRunning;
     private bool _canChangeinvinciblePhaseToZero;
 
+    [Header("Go references")]
+    [SerializeField] private FakeGameUI _fakeGameUI;
+    [SerializeField] private Player _player;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -52,8 +56,7 @@ public class RealGameUI : MonoBehaviour
 
     private void ScoreAnim()
     {
-        FakeGameUI aux = FindObjectOfType<FakeGameUI>();
-        if (aux.GetCanStartRealGameUI == true)
+        if (_fakeGameUI.GetCanStartRealGameUI == true)
         {
             _animator.SetInteger(_scoreStartPhaseParameter, 0);
         }
@@ -65,21 +68,19 @@ public class RealGameUI : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        Player aux = FindObjectOfType<Player>();
-        _scoreText.text = "Score: " + aux.GetSCR.ToString("n0");
+        _scoreText.text = "Score: " + _player.GetSCR.ToString("n0");
     }
 
     private void InvincibleAnim()
     {
-        Player aux = FindObjectOfType<Player>();
-        _slider.maxValue = aux.GetInvincibleDuration;
-        if (aux.GetIsInvincible)
+        _slider.maxValue = _player.GetInvincibleDuration;
+        if (_player.GetIsInvincible)
         {
             _animator.SetInteger(_invinciblePhaseParameter, 0);
-            _slider.value = aux.GetInvincibleDuration - aux.GetInvincibleTimer;
+            _slider.value = _player.GetInvincibleDuration - _player.GetInvincibleTimer;
             _canChangeinvinciblePhaseToZero = true;
         }
-        else if (aux.GetIsInvincible == false && _canChangeinvinciblePhaseToZero)
+        else if (_player.GetIsInvincible == false && _canChangeinvinciblePhaseToZero)
         {
             _animator.SetInteger(_invinciblePhaseParameter, 1);
         }
@@ -87,9 +88,10 @@ public class RealGameUI : MonoBehaviour
     #endregion Custom Functions
 
     #region Properties
-    public bool GetIsGameRunning
+    public bool IsGameRunning
     {
         get { return _isGameRunning; }
+        set { _isGameRunning = value; }
     }
     #endregion Properties
 

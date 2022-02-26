@@ -55,7 +55,7 @@ public class Word : MonoBehaviour
     private void IncreaseSpd()
     {
         RealGameUI aux = FindObjectOfType<RealGameUI>();
-        if (aux.GetIsGameRunning == true)
+        if (aux.IsGameRunning == true)
         {
             if (Time.time > _canIncreaseSpd)
             {
@@ -91,7 +91,8 @@ public class Word : MonoBehaviour
             default:
                 break;
         }
-        if (transform.position.y <= 0)
+        RealGameUI aux = FindObjectOfType<RealGameUI>();
+        if (transform.position.y <= 0 || aux.IsGameRunning == false)
         {
             Destroy(gameObject);
         }

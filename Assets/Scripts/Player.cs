@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     private float _invincibleTimer;
     private float _invincibleDuration = 5f;
 
+    [Header("Go references")]
+    [SerializeField] private RealGameUI _realGameUI;
+
     private void Awake()
     {
         Cursor.visible = false;
@@ -66,25 +69,20 @@ public class Player : MonoBehaviour
     {
         if (_hp <= 0)
         {
+            _realGameUI.IsGameRunning = false;
             _animator.SetInteger(_buffIdParameter, 2);
-            Debug.Log("dead");
         }
     }
 
     private void GainScore()
     {
-        RealGameUI aux = FindObjectOfType<RealGameUI>();
-        if (aux.GetIsGameRunning)
+        if (_realGameUI.IsGameRunning)
         {
             if (Time.time > _canScore)
             {
                 _scr++;
                 _canScore = Time.time + _scoreFreq;
             }
-        }
-        else
-        {
-            _scr = 0;
         }
     }
 

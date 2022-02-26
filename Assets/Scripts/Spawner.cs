@@ -22,6 +22,9 @@ public class Spawner : MonoBehaviour
     private float _spawnTimeMax = 22.5f; //30
     private float _canSpawnFriend;
 
+    [Header("Go references")]
+    [SerializeField] private RealGameUI _realGameUI;
+
     private void Update()
     {
         GameStatusCheck();
@@ -32,8 +35,7 @@ public class Spawner : MonoBehaviour
 
     private void GameStatusCheck()
     {
-        RealGameUI aux = FindObjectOfType<RealGameUI>();
-        if (aux.GetIsGameRunning == true)
+        if (_realGameUI.IsGameRunning == true)
         {
             _isActive = true;
         }
