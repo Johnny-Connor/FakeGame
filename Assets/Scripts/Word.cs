@@ -9,7 +9,7 @@ public class Word : MonoBehaviour
     private static float _friendSpd;
     private static float _spd;
     private float _initialSpd = 250;
-    private static float _spdIncreaseValue = 10;
+    private static float _spdIncreaseValue = 15;
     private static float _canIncreaseSpd = -1;
     private static float _spdIncreaseRate = 1f;
 
