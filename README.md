@@ -14,7 +14,7 @@ Despite of that, I made sure that the player's experience wouldn't get compromis
 
 1646 out of over 10.000 participants have submitted their games.
 
-Despite believing that a game can't be defined by just a number, I've got really happy with the fact that my game made it to the [very first page](https://itch.io/jam/brackeys-7/results/fun) in the category that I consider the most important: fun! Here are the ratings I got in every category:
+Despite believing that a game can't be defined by just a number, I got really happy with the fact that my game made it to the [very first page](https://itch.io/jam/brackeys-7/results/fun) in the category that I consider the most important: fun! Here are the ratings I got in every category:
 
 * Fun: #19
 * Innovation: #106
