@@ -12,7 +12,7 @@ Despite of that, I made sure that the player's experience wouldn't get compromis
 
 # Results
 
-1646 out of 10.4k participants have submitted their games.
+1,646 out of 10.4k participants have submitted their games.
 
 Despite believing that a game can't be defined by just a number, I got really happy with the fact that my game made it to the [very first page](https://itch.io/jam/brackeys-7/results/fun) in the category that I consider the most important: fun! Here are the ratings I got in every category:
 
