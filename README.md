@@ -1,4 +1,4 @@
-# About it
+# About
 
 A game I made in just 4 days for [Brackeys Game Jam 2022.1](https://itch.io/jam/brackeys-7). The theme was "It is not real" and it was the first Game Jam I've ever participated! You can play the game in your browser by clicking [here](https://johnny-connor.itch.io/fake-game).
 
